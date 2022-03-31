@@ -304,6 +304,7 @@ namespace FallGuys
         {
             List<Vector3> tempVertices = new List<Vector3>();
             Vector3 temp_vector;
+            //Lingkaran
             for (int i = 0; i < 360; i++)
             {
                 double degInRad = i * Math.PI / 180;
