@@ -50,7 +50,7 @@ namespace FallGuys
             foreach (Asset3d i in objectList)
             {
                 i.render();
-                i.rotate(Vector3.Zero, Vector3.UnitZ, 45 * time);
+                //i.rotate(Vector3.Zero, Vector3.UnitZ, 45 * time);
                 foreach (Asset3d j in i.child)
                 {
                     //j.rotate(Vector3.Zero, Vector3.UnitY, 720 * time);
