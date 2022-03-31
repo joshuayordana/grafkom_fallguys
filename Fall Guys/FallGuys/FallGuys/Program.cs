@@ -10,7 +10,7 @@ namespace FallGuys
 			var ourWindow = new NativeWindowSettings()
 			{
 				Size = new Vector2i(600, 600),
-				Title = "ConsoleApp1"
+				Title = "Fall Guys"
 			};
 
 			using (var window = new Window(GameWindowSettings.Default, ourWindow))
