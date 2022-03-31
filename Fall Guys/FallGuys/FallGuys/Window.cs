@@ -33,6 +33,10 @@ namespace FallGuys
             balonudara_elipsoid.createEllipsoid(0, 2, 0, 2, 1, 1, 50, 50);
             objectList.Add(balonudara_elipsoid);
 
+            var silinder = new Asset3d(new Vector3(1, 0.0f, 0.0f));
+            silinder.createCylinder(0, -2, 2, 50);
+            objectList.Add(silinder);
+
             foreach (Asset3d i in objectList)
             {
                 i.load(Size.X, Size.Y);

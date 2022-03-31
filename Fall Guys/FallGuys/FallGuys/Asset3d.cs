@@ -300,6 +300,25 @@ namespace FallGuys
             }
         }
 
+        public void createCylinder(float x, float y, float radius, float height)
+        {
+            List<Vector3> tempVertices = new List<Vector3>();
+            Vector3 temp_vector;
+            for (int i = 0; i < 360; i++)
+            {
+                double degInRad = i * Math.PI / 180;
+
+                //x
+                temp_vector.X = radius * (float)Math.Cos(degInRad) + x;
+                //y
+                temp_vector.Z = radius * (float)Math.Sin(degInRad) + y;
+                //y
+                temp_vector.Y = -2;
+                tempVertices.Add(temp_vector);
+            }
+            vertices = tempVertices;
+        }
+
         #endregion
 
         #region transforms
