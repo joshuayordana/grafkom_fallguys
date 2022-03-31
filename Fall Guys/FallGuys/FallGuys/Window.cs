@@ -29,6 +29,10 @@ namespace FallGuys
             cube1.createCuboid(2, 0, 0, 1); //sama dengan createBoxVertices
             objectList.Add(cube1);
 
+            var balonudara_elipsoid = new Asset3d(new Vector3(0.5f, 0.5f, 0.0f));
+            balonudara_elipsoid.createEllipsoid(0, 0, 0, 2, 1, 1, 50, 50);
+            objectList.Add(balonudara_elipsoid);
+
             foreach (Asset3d i in objectList)
             {
                 i.load(Size.X, Size.Y);
