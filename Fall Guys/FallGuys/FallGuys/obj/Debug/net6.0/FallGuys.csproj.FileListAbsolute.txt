@@ -70,3 +70,39 @@ E:\SEMESTER 4\GRAFKOM\Proyek UTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\ob
 E:\SEMESTER 4\GRAFKOM\Proyek UTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\ref\FallGuys.dll
 E:\SEMESTER 4\GRAFKOM\Proyek UTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.pdb
 E:\SEMESTER 4\GRAFKOM\Proyek UTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.genruntimeconfig.cache
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\FallGuys.exe
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\FallGuys.deps.json
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\FallGuys.runtimeconfig.json
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\FallGuys.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\ref\FallGuys.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\FallGuys.pdb
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Compute.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Core.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Graphics.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Input.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Mathematics.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.OpenAL.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Windowing.Common.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Windowing.Desktop.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\OpenTK.Windowing.GraphicsLibraryFramework.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\linux-x64\native\libglfw.so.3.3
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\osx-x64\native\libglfw.3.dylib
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\win-x64\native\glfw3.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\win-x86\native\glfw3.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\LearnOpenTK.Common.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\bin\Debug\net6.0\LearnOpenTK.Common.pdb
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.csproj.AssemblyReference.cache
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.GeneratedMSBuildEditorConfig.editorconfig
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.AssemblyInfoInputs.cache
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.AssemblyInfo.cs
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.csproj.CoreCompileInputs.cache
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.csproj.CopyComplete
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\ref\FallGuys.dll
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.pdb
+D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Fall Guys\FallGuys\FallGuys\obj\Debug\net6.0\FallGuys.genruntimeconfig.cache

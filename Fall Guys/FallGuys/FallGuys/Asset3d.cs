@@ -62,7 +62,8 @@ namespace FallGuys
                 GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Count * sizeof(uint), indices.ToArray(), BufferUsageHint.StaticDraw);
             }
 
-            view = Matrix4.CreateTranslation(0, 0, -8.0f);
+            //jarak pandang kamera, ganti parameter 3 nya
+            view = Matrix4.CreateTranslation(0, 0, -10.0f);
             projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), sizeX / (float)sizeY, 0.01f, 100f);
 
             _shader = new Shader(path + "shader.vert", path + "shader.frag");
@@ -113,6 +114,7 @@ namespace FallGuys
 
         #region solidObjects
 
+        //z nya minus artinya mejauh dari kamera
         public void createCuboid(float x_, float y_, float z_, float length)
         {
             var tempVertices = new List<Vector3>();
@@ -164,6 +166,90 @@ namespace FallGuys
             temp_vector.X = x_ + length / 2.0f;
             temp_vector.Y = y_ - length / 2.0f;
             temp_vector.Z = z_ + length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            var tempIndices = new List<uint>
+            {
+				//Back
+				1, 2, 0,
+                2, 1, 3,
+				
+				//Top
+				5, 0, 4,
+                0, 5, 1,
+
+				//Right
+				5, 3, 1,
+                3, 5, 7,
+
+				//Left
+				0, 6, 4,
+                6, 0, 2,
+
+				//Front
+				4, 7, 5,
+                7, 4, 6,
+
+				//Bottom
+				3, 6, 2,
+                6, 3, 7
+            };
+            vertices = tempVertices;
+            indices = tempIndices;
+        }
+
+        //ini balok arena
+        public void createCuboidFlat(float x_, float y_, float z_, float length)
+        {
+            var tempVertices = new List<Vector3>();
+            Vector3 temp_vector;
+
+            //Titik 1
+            temp_vector.X = x_ - 3 * length;
+            temp_vector.Y = y_ + length / 5.0f;
+            temp_vector.Z = z_ - 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 2
+            temp_vector.X = x_ + 3 * length;
+            temp_vector.Y = y_ + length / 5.0f;
+            temp_vector.Z = z_ - 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 3
+            temp_vector.X = x_ - 3 * length;
+            temp_vector.Y = y_ - length / 5.0f;
+            temp_vector.Z = z_ - 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 4
+            temp_vector.X = x_ + 3 * length;
+            temp_vector.Y = y_ - length / 5.0f;
+            temp_vector.Z = z_ - 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 5
+            temp_vector.X = x_ - 3 * length;
+            temp_vector.Y = y_ + length / 5.0f;
+            temp_vector.Z = z_ + 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 6
+            temp_vector.X = x_ + 3 * length;
+            temp_vector.Y = y_ + length / 5.0f;
+            temp_vector.Z = z_ + 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 7
+            temp_vector.X = x_ - 3 * length;
+            temp_vector.Y = y_ - length / 5.0f;
+            temp_vector.Z = z_ + 2 * length;
+            tempVertices.Add(temp_vector);
+
+            //Titik 8
+            temp_vector.X = x_ + 3 * length;
+            temp_vector.Y = y_ - length / 5.0f;
+            temp_vector.Z = z_ + 2 * length;
             tempVertices.Add(temp_vector);
 
             var tempIndices = new List<uint>
@@ -297,6 +383,52 @@ namespace FallGuys
                     indices.Add(k2);
                     indices.Add(k2 + 1);
                 }
+            }   
+        }
+
+        public void createCylinder(float radius, float height, float _x, float _y, float _z)
+        {
+            objectCenter.X = _x;
+            objectCenter.Y = _y;
+            objectCenter.Z = _z;
+            float pi = (float)Math.PI;
+            Vector3 temp_vector;
+
+            for (float i = -pi / 2; i <= pi / 2; i += pi / 360)
+            {
+                for (float j = -pi; j <= pi; j += pi / 360)
+                {
+                    temp_vector.X = radius * (float)Math.Cos(i) * (float)Math.Cos(j) + objectCenter.X;
+                    temp_vector.Y = radius * (float)Math.Cos(i) * (float)Math.Sin(j) + objectCenter.Y;
+                    if (temp_vector.Y < objectCenter.Y)
+                        temp_vector.Y = objectCenter.Y - height * 0.5f;
+                    else
+                        temp_vector.Y = objectCenter.Y + height * 0.5f;
+                    temp_vector.Z = radius * (float)Math.Sin(i) + objectCenter.Z;
+                    vertices.Add(temp_vector);
+                }
+            }
+        }
+
+        public void createHalfEllipsoid(float radiusX, float radiusY, float radiusZ, float _x, float _y, float _z)
+        {
+
+            objectCenter.X = _x;
+            objectCenter.Y = _y;
+            objectCenter.Z = _z;
+
+            float pi = (float)Math.PI;
+            Vector3 temp_vector;
+            for (float v = -pi / 2; v <= pi / 2; v += pi / 360)
+            {
+                for (float u = 0; u <= pi; u += pi / 360)
+                {
+                    temp_vector.X = _x + (float)Math.Cos(v) * (float)Math.Cos(u) * radiusX;
+                    temp_vector.Y = _y + (float)Math.Cos(v) * (float)Math.Sin(u) * radiusY;
+                    temp_vector.Z = _z + (float)Math.Sin(v) * radiusZ;
+                    vertices.Add(temp_vector);
+
+                }
             }
         }
 
@@ -384,6 +516,8 @@ namespace FallGuys
             }
         }
 
+        //jika ada koordinat yang tidak ingin diubah, masukan 1 di parameternya
+        //jadi misal mau scaleX sebanyak 2: di parameternya -> .scale(2, 1, 1)
         public void scale(float scaleX, float scaleY, float scaleZ)
         {
             model *= Matrix4.CreateTranslation(-objectCenter);
