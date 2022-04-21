@@ -12,6 +12,7 @@ namespace FallGuys
     class Window : GameWindow
     {
         List<Asset3d> objectList = new List<Asset3d>();
+        List<Asset3d> balonudara = new List<Asset3d>();
         Camera _camera;
 
         //untuk tilt kamera
@@ -362,7 +363,34 @@ namespace FallGuys
 
             #endregion
 
+            #region balon udara
+
+            //Green = (9, 165, 92) = (0.035f, 0.647f, 0.361f)
+            var balon = new Asset3d(new Vector3(0.035f, 0.647f, 0.361f));
+            balon.createEllipsoid(0f, 2f, 0f, 1f, 0.5f, 0.5f, 100, 100);
+            balon.translate(0, -0.2f, 0.7f);
+            balonudara.Add(balon);
+
+            var siripbelakang = new Asset3d(new Vector3(0.8f, 0f, 0f));
+            siripbelakang.createCuboid(1f, 2f, 0f, 0.2f);
+            siripbelakang.scale(1f, 0.1f, 2.5f);
+            siripbelakang.translate(-0.05f, 1.6f, 0.7f);
+            balonudara.Add(siripbelakang);
+
+            var siripbelakang2 = new Asset3d(new Vector3(0.8f, 0f, 0f));
+            siripbelakang2.createCuboid(1f, 2f, 0f, 0.2f);
+            siripbelakang2.scale(1f, 2.5f, 0.1f);
+            siripbelakang2.translate(-0.05f, -3.225f, 0.7f);
+            balonudara.Add(siripbelakang2);
+
+
+            #endregion
+
             foreach (Asset3d i in objectList)
+            {
+                i.load(Size.X, Size.Y);
+            }
+            foreach (Asset3d i in balonudara)
             {
                 i.load(Size.X, Size.Y);
             }
@@ -386,7 +414,18 @@ namespace FallGuys
                 }
             }
             objectList.ElementAt(1).rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 10 * time);
-            
+
+            // RENDER BALON UDARA
+            foreach (Asset3d i in balonudara)
+            {
+                i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
+                i.rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 5 * time);
+                foreach (Asset3d j in i.child)
+                {
+                    //j.rotate(Vector3.Zero, Vector3.UnitY, 720 * time);
+                }
+            }
+
 
 
             SwapBuffers();
