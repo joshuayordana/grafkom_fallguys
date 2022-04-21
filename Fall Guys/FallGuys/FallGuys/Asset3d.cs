@@ -23,9 +23,7 @@ namespace FallGuys
         private Shader _shader;
 
         private Matrix4 model = Matrix4.Identity;   // Model Matrix      ==> Matrix ini yang akan berubah saat terjadi transformasi
-        private Matrix4 view;                       // View Matrix       ==> Matrix ini menentukan arah pandang 'kamera'
-        private Matrix4 projection;                 // Projection Matrix ==> Matrix ini menentukan jenis projection, kamera game cenderung menggunakan kamera perspective.
-
+        
         private Vector3 color;                      // Warna objek, dikirim ke shader lewat uniform.
 
         public List<Vector3> _euler = new List<Vector3>();  // Sudut lokal, relatif terhadap objek yang bersangkutan.
@@ -62,10 +60,6 @@ namespace FallGuys
                 GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Count * sizeof(uint), indices.ToArray(), BufferUsageHint.StaticDraw);
             }
 
-            //jarak pandang kamera, ganti parameter 3 nya
-            view = Matrix4.CreateTranslation(0, 0, -10.0f);
-            projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), sizeX / (float)sizeY, 0.01f, 100f);
-
             _shader = new Shader(path + "shader.vert", path + "shader.frag");
             _shader.Use();
 
@@ -75,7 +69,7 @@ namespace FallGuys
             }
         }
 
-        public void render()
+        public void render(Matrix4 camera_view, Matrix4 camera_projection)
         {
             _shader.Use();
             GL.BindVertexArray(_vertexArrayObject);
@@ -83,8 +77,8 @@ namespace FallGuys
             _shader.SetVector3("objColor", color);
 
             _shader.SetMatrix4("model", model);
-            _shader.SetMatrix4("view", view);
-            _shader.SetMatrix4("projection", projection);
+            _shader.SetMatrix4("view", camera_view);
+            _shader.SetMatrix4("projection", camera_projection);
 
             if (indices.Count != 0)
             {
@@ -97,7 +91,7 @@ namespace FallGuys
 
             foreach (var i in child)
             {
-                i.render();
+                i.render(camera_view, camera_projection);
             }
         }
 
@@ -430,6 +424,26 @@ namespace FallGuys
 
                 }
             }
+        }
+
+        public void createCylinder(float x, float y, float radius, float height)
+        {
+            List<Vector3> tempVertices = new List<Vector3>();
+            Vector3 temp_vector;
+            //Lingkaran
+            for (int i = 0; i < 360; i++)
+            {
+                double degInRad = i * Math.PI / 180;
+
+                //x
+                temp_vector.X = radius * (float)Math.Cos(degInRad) + x;
+                //y
+                temp_vector.Z = radius * (float)Math.Sin(degInRad) + y;
+                //y
+                temp_vector.Y = -2;
+                tempVertices.Add(temp_vector);
+            }
+            vertices = tempVertices;
         }
 
         #endregion
