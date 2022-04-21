@@ -206,10 +206,39 @@ namespace FallGuys
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             bendera_finish_bawah.translate(0, 0.37f, -2.7f);
             objectList.Add(bendera_finish_bawah);
-#endregion
+
+            //====================BOLA GOYANG-GOYANG===================
+            //orange rgb (255,153,51)
+            var center_bola = new Asset3d(new Vector3(1, 0.6f, 0.2f));
+            center_bola.createEllipsoid(0, 2.3f, -2, 0.15f, 0.1f, 0.1f, 100, 100);
+            objectList.Add(center_bola);
+
+            //purple rgb (178,102,255)
+            var center_bola_tengah = new Asset3d(new Vector3(0.698f, 0.4f, 1));
+            center_bola_tengah.createEllipsoid(0, 2.3f, -2, 0.095f, 0.08f, 0.12f, 100, 100);
+            objectList.Add(center_bola_tengah);
+
+            //purple rgb (178,102,255)
+            var tongkat_bola = new Asset3d(new Vector3(0.698f, 0.4f, 1));
+            tongkat_bola.createCylinder(0.05f, 1.2f, 0, 1.7f, -2);
+            tongkat_bola.rotate(center_bola_tengah.objectCenter, Vector3.UnitZ, -45);
+            objectList.Add(tongkat_bola);
+
+            var bola_atas = new Asset3d(new Vector3(0.698f, 0.4f, 1));
+            bola_atas.createHalfEllipsoid(0.3f, 0.3f, 0.3f, 0, 0.95f, -2);
+            bola_atas.rotate(center_bola_tengah.objectCenter, Vector3.UnitZ, -45);
+            objectList.Add(bola_atas);
+
+            //lightcoral rgb(240,128,128)
+            var bola_bawah = new Asset3d(new Vector3(0.941f, 0.501f, 0.501f));
+            bola_bawah.createHalfEllipsoid(0.3f, 0.3f, 0.3f, 0, 1.75f, -2);
+            bola_bawah.rotate(bola_atas.objectCenter, Vector3.UnitX, 180);
+            bola_bawah.rotate(center_bola_tengah.objectCenter, Vector3.UnitZ, -45);
+            objectList.Add(bola_bawah);
+            #endregion
 
             #region pagar
-            
+
             var pagar1 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar1.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
             pagar1.scale(13.3f, 2.0f, 0.3f);
