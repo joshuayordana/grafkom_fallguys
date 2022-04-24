@@ -27,8 +27,8 @@ namespace FallGuys
         int speed_goyang = 15;
         float speed = 1.1f;
 
-        int speedTangan = -5;
-        float speedLompat = 0.2f;
+        float speedTangan = -0.07f;
+        float speedLompat = 0.003f;
 
         public Window(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
@@ -681,11 +681,11 @@ namespace FallGuys
             foreach (Asset3d i in character)
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
-                i.translate(0, time * speedLompat, 0);
+                i.translate(0, speedLompat, 0);
 
-                character.ElementAt(3).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
-                character.ElementAt(4).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
-                character.ElementAt(5).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
+                character.ElementAt(3).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan);
+                character.ElementAt(4).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan);
+                character.ElementAt(5).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan);
 
                 Console.WriteLine("X: " + character.ElementAt(5).objectCenter.Y);
             }
