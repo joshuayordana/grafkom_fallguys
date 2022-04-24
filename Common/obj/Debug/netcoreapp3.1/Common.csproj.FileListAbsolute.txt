@@ -47,3 +47,13 @@ D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Common\obj\De
 D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
 D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\LearnOpenTK.Common.dll
 D:\PETRA\Semester 4\VSCode Project File\ProyekUTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\LearnOpenTK.Common.pdb
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\bin\Debug\netcoreapp3.1\LearnOpenTK.Common.deps.json
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\bin\Debug\netcoreapp3.1\LearnOpenTK.Common.dll
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\bin\Debug\netcoreapp3.1\LearnOpenTK.Common.pdb
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.csproj.AssemblyReference.cache
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\LearnOpenTK.Common.dll
+C:\Users\irgia\Documents\.KULIAH\SMT 4\GRAFKOM\UTS\Project UTS\grafkom_fallguys\Common\obj\Debug\netcoreapp3.1\LearnOpenTK.Common.pdb

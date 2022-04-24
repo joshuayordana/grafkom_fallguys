@@ -495,19 +495,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\irgia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PETRA\\Semester 4\\VSCode Project File\\ProyekUTS\\grafkom_fallguys\\Common\\Common.csproj",
+      "projectUniqueName": "C:\\Users\\irgia\\Documents\\.KULIAH\\SMT 4\\GRAFKOM\\UTS\\Project UTS\\grafkom_fallguys\\Common\\Common.csproj",
       "projectName": "LearnOpenTK.Common",
-      "projectPath": "D:\\PETRA\\Semester 4\\VSCode Project File\\ProyekUTS\\grafkom_fallguys\\Common\\Common.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\PETRA\\Semester 4\\VSCode Project File\\ProyekUTS\\grafkom_fallguys\\Common\\obj\\",
+      "projectPath": "C:\\Users\\irgia\\Documents\\.KULIAH\\SMT 4\\GRAFKOM\\UTS\\Project UTS\\grafkom_fallguys\\Common\\Common.csproj",
+      "packagesPath": "C:\\Users\\irgia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\irgia\\Documents\\.KULIAH\\SMT 4\\GRAFKOM\\UTS\\Project UTS\\grafkom_fallguys\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\irgia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -552,26 +552,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

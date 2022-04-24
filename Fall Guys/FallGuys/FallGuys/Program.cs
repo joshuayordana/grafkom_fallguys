@@ -9,7 +9,7 @@ namespace FallGuys
 		{
 			var ourWindow = new NativeWindowSettings()
 			{
-				Size = new Vector2i(600, 600),
+				Size = new Vector2i(1920, 1080),
 				Title = "Fall Guys"
 			};
 

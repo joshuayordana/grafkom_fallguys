@@ -23,7 +23,7 @@ namespace FallGuys
         private Shader _shader;
 
         private Matrix4 model = Matrix4.Identity;   // Model Matrix      ==> Matrix ini yang akan berubah saat terjadi transformasi
-        
+
         private Vector3 color;                      // Warna objek, dikirim ke shader lewat uniform.
 
         public List<Vector3> _euler = new List<Vector3>();  // Sudut lokal, relatif terhadap objek yang bersangkutan.
@@ -377,7 +377,7 @@ namespace FallGuys
                     indices.Add(k2);
                     indices.Add(k2 + 1);
                 }
-            }   
+            }
         }
 
         public void createCylinder(float radius, float height, float _x, float _y, float _z)
@@ -404,6 +404,141 @@ namespace FallGuys
             }
         }
 
+        //balok buat objek karakter
+        public void createBox(float x_, float y_, float z_, float length)
+        {
+            var tempVertices = new List<Vector3>();
+            Vector3 temp_vector;
+
+            //Titik 1
+            temp_vector.X = x_ - length / 2.0f;
+            temp_vector.Y = y_ + length / 10.0f;
+            temp_vector.Z = z_ - length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 2
+            temp_vector.X = x_ + length / 2.0f;
+            temp_vector.Y = y_ + length / 10.0f;
+            temp_vector.Z = z_ - length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 3
+            temp_vector.X = x_ - length / 2.0f;
+            temp_vector.Y = y_ - length / 10.0f;
+            temp_vector.Z = z_ - length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 4
+            temp_vector.X = x_ + length / 2.0f;
+            temp_vector.Y = y_ - length / 10.0f;
+            temp_vector.Z = z_ - length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 5
+            temp_vector.X = x_ - length / 2.0f;
+            temp_vector.Y = y_ + length / 10.0f;
+            temp_vector.Z = z_ + length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 6
+            temp_vector.X = x_ + length / 2.0f;
+            temp_vector.Y = y_ + length / 10.0f;
+            temp_vector.Z = z_ + length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 7
+            temp_vector.X = x_ - length / 2.0f;
+            temp_vector.Y = y_ - length / 10.0f;
+            temp_vector.Z = z_ + length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            //Titik 8
+            temp_vector.X = x_ + length / 2.0f;
+            temp_vector.Y = y_ - length / 10.0f;
+            temp_vector.Z = z_ + length / 2.0f;
+            tempVertices.Add(temp_vector);
+
+            var tempIndices = new List<uint>
+            {
+                //Back
+                1, 2, 0,
+                2, 1, 3,
+    
+                //Top
+                5, 0, 4,
+                0, 5, 1,
+
+                //Right
+                5, 3, 1,
+                3, 5, 7,
+
+                //Left
+                0, 6, 4,
+                6, 0, 2,
+
+                //Front
+                4, 7, 5,
+                7, 4, 6,
+
+                //Bottom
+                3, 6, 2,
+                6, 3, 7
+            };
+            vertices = tempVertices;
+            indices = tempIndices;
+        }
+
+        public void createEllipticCone(float radiusX, float radiusY, float radiusZ, float _x, float _y, float _z, int sectorCount, int stackCount)
+        {
+            float pi = (float)Math.PI;
+            Vector3 temp_vector;
+            float sectorStep = 2 * (float)Math.PI / sectorCount;
+            float stackStep = (float)Math.PI / stackCount;
+            float sectorAngle, StackAngle, x, y, z;
+
+            for (int i = 0; i <= stackCount / 2; ++i)
+            {
+                StackAngle = pi / 2 - i * stackStep;
+                x = radiusX * StackAngle;
+                y = radiusY * StackAngle;
+                z = radiusZ * StackAngle;
+
+                for (int j = 0; j <= sectorCount; ++j)
+                {
+                    sectorAngle = j * sectorStep;
+
+                    temp_vector.X = x * (float)Math.Cos(sectorAngle) + _x;
+                    temp_vector.Y = y * (float)Math.Sin(sectorAngle) + _y;
+                    temp_vector.Z = z + _z;
+                    vertices.Add(temp_vector);
+                }
+            }
+
+
+            uint k1, k2;
+            for (int i = 0; i < stackCount; ++i)
+            {
+                k1 = (uint)(i * (sectorCount + 1));
+                k2 = (uint)(k1 + sectorCount + 1);
+                for (int j = 0; j < sectorCount; ++j, ++k1, ++k2)
+                {
+                    //if (i != 0)
+                    //{
+                    indices.Add(k1);
+                    indices.Add(k2);
+                    indices.Add(k1 + 1);
+                    //}
+                    //if (i != (stackCount - 1))
+                    //{
+                    indices.Add(k1 + 1);
+                    indices.Add(k2);
+                    indices.Add(k2 + 1);
+                    //}
+                }
+            }
+
+        }
+
         public void createHalfEllipsoid(float radiusX, float radiusY, float radiusZ, float _x, float _y, float _z)
         {
 
@@ -425,31 +560,39 @@ namespace FallGuys
                 }
             }
         }
-
-        public void createCylinder(float x, float y, float radius, float height)
-        {
-            List<Vector3> tempVertices = new List<Vector3>();
-            Vector3 temp_vector;
-            //Lingkaran
-            for (int i = 0; i < 360; i++)
-            {
-                double degInRad = i * Math.PI / 180;
-
-                //x
-                temp_vector.X = radius * (float)Math.Cos(degInRad) + x;
-                //y
-                temp_vector.Z = radius * (float)Math.Sin(degInRad) + y;
-                //y
-                temp_vector.Y = -2;
-                tempVertices.Add(temp_vector);
-            }
-            vertices = tempVertices;
-        }
-
         #endregion
 
         #region transforms
         public void rotate(Vector3 pivot, Vector3 vector, float angle)
+        {
+            var radAngle = MathHelper.DegreesToRadians(angle);
+
+            var arbRotationMatrix = new Matrix4
+                (
+                new Vector4((float)(Math.Cos(radAngle) + Math.Pow(vector.X, 2.0f) * (1.0f - Math.Cos(radAngle))), (float)(vector.X * vector.Y * (1.0f - Math.Cos(radAngle)) + vector.Z * Math.Sin(radAngle)), (float)(vector.X * vector.Z * (1.0f - Math.Cos(radAngle)) - vector.Y * Math.Sin(radAngle)), 0),
+                new Vector4((float)(vector.X * vector.Y * (1.0f - Math.Cos(radAngle)) - vector.Z * Math.Sin(radAngle)), (float)(Math.Cos(radAngle) + Math.Pow(vector.Y, 2.0f) * (1.0f - Math.Cos(radAngle))), (float)(vector.Y * vector.Z * (1.0f - Math.Cos(radAngle)) + vector.X * Math.Sin(radAngle)), 0),
+                new Vector4((float)(vector.X * vector.Z * (1.0f - Math.Cos(radAngle)) + vector.Y * Math.Sin(radAngle)), (float)(vector.Y * vector.Z * (1.0f - Math.Cos(radAngle)) - vector.X * Math.Sin(radAngle)), (float)(Math.Cos(radAngle) + Math.Pow(vector.Z, 2.0f) * (1.0f - Math.Cos(radAngle))), 0),
+                Vector4.UnitW
+                );
+
+            model *= Matrix4.CreateTranslation(-pivot);
+            model *= arbRotationMatrix;
+            model *= Matrix4.CreateTranslation(pivot);
+
+            for (int i = 0; i < 3; i++)
+            {
+                _euler[i] = Vector3.Normalize(getRotationResult(pivot, vector, radAngle, _euler[i], true));
+            }
+
+            objectCenter = getRotationResult(pivot, vector, radAngle, objectCenter);
+
+            foreach (var i in child)
+            {
+                i.rotate(pivot, vector, angle);
+            }
+        }
+
+        public void rotate_animation(Vector3 pivot, Vector3 vector, float angle)
         {
             var radAngle = MathHelper.DegreesToRadians(angle);
 
@@ -505,6 +648,17 @@ namespace FallGuys
                 temp.X * (float)(vector.X * vector.Z * (1.0f - Math.Cos(angle)) - vector.Y * Math.Sin(angle)) +
                 temp.Y * (float)(vector.Y * vector.Z * (1.0f - Math.Cos(angle)) + vector.X * Math.Sin(angle)) +
                 temp.Z * (float)(Math.Cos(angle) + Math.Pow(vector.Z, 2.0f) * (1.0f - Math.Cos(angle)));
+
+            //print
+            //Console.WriteLine("X: " + newPosition.X);
+            //Console.WriteLine("Y: " + newPosition.Y);
+            //Console.WriteLine("Z: " + newPosition.Z);
+
+            Vector3 getPosition()
+            {
+                return newPosition;
+            }
+
 
             if (isEuler)
             {
