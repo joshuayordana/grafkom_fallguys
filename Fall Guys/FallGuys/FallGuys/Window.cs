@@ -11,7 +11,7 @@ namespace FallGuys
 {
     class Window : GameWindow
     {
-        List<Asset3d> objectList = new List<Asset3d>();
+        List<Asset3d> listarena = new List<Asset3d>();
         List<Asset3d> balonudara = new List<Asset3d>();
         List<Asset3d> animasi_gelinding = new List<Asset3d>();
         List<Asset3d> bola_goyang = new List<Asset3d>();
@@ -27,7 +27,8 @@ namespace FallGuys
         int speed_goyang = 15;
         float speed = 1.1f;
 
-        int speedTangan = 5;
+        int speedTangan = -5;
+        float speedLompat = 0.2f;
 
         public Window(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
@@ -55,7 +56,7 @@ namespace FallGuys
             var tiang = new Asset3d(new Vector3(1, 0.647f, 0));
             tiang.createCylinder(0.1f, 0.3f, 0, 0, 3.0f);
             tiang.translate(0, -0.2f, 0.3f);
-            objectList.Add(tiang);
+            listarena.Add(tiang);
 
             //-1.5f, -0.2f, 0a
             //tambahin x ngubah atas bawah, tambahin y ngubah kiri kanan, tambahin z nya jadi dekat
@@ -64,79 +65,79 @@ namespace FallGuys
             tongkat.createCylinder(0.1f, 1.6f, 0.1f, 0, 3.0f);
             tongkat.rotate(Vector3.Zero, Vector3.UnitZ, 90);
             tongkat.translate(0, -0.1f, 0.3f);
-            objectList.Add(tongkat);
+            listarena.Add(tongkat);
 
             //=================OBSTACLE DONAT UNGU=======================
             //radmajor itu scale kanan kiri, radminor itu scale atas bawah
             //mediumpurple rgb(147,112,219)
             var donat1 = new Asset3d(new Vector3(0.576f, 0.439f, 0.858f));
             donat1.createTorus(-0.6f, -0.2f, 1.9f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat1);
+            listarena.Add(donat1);
 
             var donat2 = new Asset3d(new Vector3(0.576f, 0.439f, 0.858f));
             donat2.createTorus(-0.6f, -0.1f, 1.9f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat2);
+            listarena.Add(donat2);
 
             var donat3 = new Asset3d(new Vector3(0.576f, 0.439f, 0.858f));
             donat3.createTorus(-0.6f, 0, 1.9f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat3);
+            listarena.Add(donat3);
 
             //warna orange code: (255,165,0)
             var tongkat_donat123 = new Asset3d(new Vector3(1, 0.647f, 0));
             tongkat_donat123.createCylinder(0.04f, 0.2f, -0.6f, 0, 1.9f);
-            objectList.Add(tongkat_donat123);
+            listarena.Add(tongkat_donat123);
 
             var atap_donat123 = new Asset3d(new Vector3(1, 0.647f, 0));
             atap_donat123.createCylinder(0.12f, 0.025f, -0.6f, 0.08f, 1.9f);
-            objectList.Add(atap_donat123);
+            listarena.Add(atap_donat123);
 
             //=================OBSTACLE DONAT MERAH=======================
             //radmajor itu scale kanan kiri, radminor itu scale atas bawah
             //crimson rgb(220,20,60)
             var donat4 = new Asset3d(new Vector3(0.977f, 0.078f, 0.235f));
             donat4.createTorus(0.7f, -0.2f, 1.6f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat4);
+            listarena.Add(donat4);
 
             var donat5 = new Asset3d(new Vector3(0.977f, 0.078f, 0.235f));
             donat5.createTorus(0.7f, -0.1f, 1.6f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat5);
+            listarena.Add(donat5);
 
             var donat6 = new Asset3d(new Vector3(0.977f, 0.078f, 0.235f));
             donat6.createTorus(0.7f, 0, 1.6f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat6);
+            listarena.Add(donat6);
 
             //warna powderblue code: rgb(176,224,230)
             var tongkat_donat456 = new Asset3d(new Vector3(0.690f, 0.878f, 0.901f));
             tongkat_donat456.createCylinder(0.04f, 0.2f, 0.7f, 0, 1.6f);
-            objectList.Add(tongkat_donat456);
+            listarena.Add(tongkat_donat456);
 
             var atap_donat456 = new Asset3d(new Vector3(0.690f, 0.878f, 0.901f));
             atap_donat456.createCylinder(0.12f, 0.025f, 0.7f, 0.08f, 1.6f);
-            objectList.Add(atap_donat456);
+            listarena.Add(atap_donat456);
 
             //=================OBSTACLE DONAT CADET BLUE=======================
             //radmajor itu scale kanan kiri, radminor itu scale atas bawah
             //cadet blue rgb(95,158,160)
             var donat7 = new Asset3d(new Vector3(0.372f, 0.619f, 0.627f));
             donat7.createTorus(0.2f, -0.2f, 2.2f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat7);
+            listarena.Add(donat7);
 
             var donat8 = new Asset3d(new Vector3(0.372f, 0.619f, 0.627f));
             donat8.createTorus(0.2f, -0.1f, 2.2f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat8);
+            listarena.Add(donat8);
 
             var donat9 = new Asset3d(new Vector3(0.372f, 0.619f, 0.627f));
             donat9.createTorus(0.2f, 0, 2.2f, 0.1f, 0.07f, 50, 50);
-            objectList.Add(donat9);
+            listarena.Add(donat9);
 
             //warna limegreen code: rgb(50,205,50)
             var tongkat_donat789 = new Asset3d(new Vector3(0.196f, 0.803f, 0.196f));
             tongkat_donat789.createCylinder(0.04f, 0.2f, 0.2f, 0, 2.2f);
-            objectList.Add(tongkat_donat789);
+            listarena.Add(tongkat_donat789);
 
             var atap_donat789 = new Asset3d(new Vector3(0.196f, 0.803f, 0.196f));
             atap_donat789.createCylinder(0.12f, 0.025f, 0.2f, 0.08f, 2.2f);
-            objectList.Add(atap_donat789);
+            listarena.Add(atap_donat789);
 
             #endregion 
 
@@ -152,7 +153,7 @@ namespace FallGuys
             //center buat objek meng gelinding
             var center_gelinding = new Asset3d(new Vector3(1, 0, 0));
             center_gelinding.createCuboid(0, -0.3f, 0, 0.1f); //sama dengan createBoxVertices
-            objectList.Add(center_gelinding);
+            listarena.Add(center_gelinding);
 
             #endregion
 
@@ -163,40 +164,40 @@ namespace FallGuys
             tiang_finish_kiri.scale(0.3f, 5, 0.3f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             tiang_finish_kiri.translate(-0.94f, -1.4f, -2.7f);
-            objectList.Add(tiang_finish_kiri);
+            listarena.Add(tiang_finish_kiri);
 
             var tiang_finish_kanan = new Asset3d(new Vector3(1, 1, 1));
             tiang_finish_kanan.createCuboid(0, 0.5f, 0, 0.3f); //sama dengan createBoxVertices
             tiang_finish_kanan.scale(0.3f, 5, 0.3f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             tiang_finish_kanan.translate(0.94f, -1.4f, -2.7f);
-            objectList.Add(tiang_finish_kanan);
+            listarena.Add(tiang_finish_kanan);
 
             var bendera_finish_atas = new Asset3d(new Vector3(1, 1, 1));
             bendera_finish_atas.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
             bendera_finish_atas.scale(12.0f, 2.0f, 0.1f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             bendera_finish_atas.translate(0, 0.67f, -2.7f);
-            objectList.Add(bendera_finish_atas);
+            listarena.Add(bendera_finish_atas);
 
             var bendera_finish_bawah = new Asset3d(new Vector3(0, 0, 0));
             bendera_finish_bawah.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
             bendera_finish_bawah.scale(12.0f, 2.0f, 0.1f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             bendera_finish_bawah.translate(0, 0.37f, -2.7f);
-            objectList.Add(bendera_finish_bawah);
+            listarena.Add(bendera_finish_bawah);
 
             //====================BOLA GOYANG-GOYANG===================
             //benda mulai dari benda ke 23
             //orange rgb (255,153,51)
             var center_bola = new Asset3d(new Vector3(1, 0.6f, 0.2f));
             center_bola.createEllipsoid(0, 2.3f, -2, 0.15f, 0.1f, 0.1f, 100, 100);
-            objectList.Add(center_bola);
+            listarena.Add(center_bola);
 
             //purple rgb (178,102,255) (benda ke 24, index nya 23)
             var center_bola_tengah = new Asset3d(new Vector3(0.698f, 0.4f, 1));
             center_bola_tengah.createEllipsoid(0, 2.3f, -2, 0.095f, 0.08f, 0.12f, 100, 100);
-            objectList.Add(center_bola_tengah);
+            listarena.Add(center_bola_tengah);
 
             //posisi awal tongkat : bola atas : bola bawah
             //0, 1.7f, -2 : 0, 0.95f, -2 : 0, 1.75f, -2
@@ -224,7 +225,7 @@ namespace FallGuys
             //warnanya violet code: rgb(238,130,238)
             var cube1 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f));
             cube1.createCuboidFlat(0, 0, 0, 0.5f); //sama dengan createBoxVertices
-            objectList.Add(cube1);
+            listarena.Add(cube1);
             cube1.rotate(Vector3.Zero, Vector3.UnitZ, 15);
 
             //atas bawah warna nya clay?: rgb(255 218 192)
@@ -232,24 +233,24 @@ namespace FallGuys
             var cube2 = new Asset3d(new Vector3(1, 0.854f, 0.752f));
             cube2.createCuboidFlat(-2.6f, -0.38f, 0, 0.5f); //sama dengan createBoxVertices
             cube2.scale(1.3f, 1, 1);
-            objectList.Add(cube2);
+            listarena.Add(cube2);
 
             //ungu: (136,101,255)
             var cube2_ = new Asset3d(new Vector3(0.533f, 0.396f, 1));
             cube2_.createCuboidFlat(-16.1f, -0.985f, 0, 0.5f); //sama dengan createBoxVertices
             cube2_.scale(0.3f, 0.3f, 1);
-            objectList.Add(cube2_);
+            listarena.Add(cube2_);
 
             //atas
             var cube3 = new Asset3d(new Vector3(1, 0.854f, 0.752f));
             cube3.createCuboidFlat(2.9f, 0.38f, 0, 0.5f); //sama dengan createBoxVertices
-            objectList.Add(cube3);
+            listarena.Add(cube3);
 
             //ungu: (136,101,255)
             var cube3_ = new Asset3d(new Vector3(0.533f, 0.396f, 1));
             cube3_.createCuboidFlat(6.7f, 1.6f, 0, 0.5f); //sama dengan createBoxVertices
             cube3_.scale(0.53f, 0.3f, 1);
-            objectList.Add(cube3_);
+            listarena.Add(cube3_);
 
             //rotasi platform
             cube1.rotate(Vector3.Zero, Vector3.UnitY, 90);
@@ -267,7 +268,7 @@ namespace FallGuys
             pagar1.scale(13.3f, 2.0f, 0.3f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar1.translate(0, -0.38f, -4.375f);
-            objectList.Add(pagar1);
+            listarena.Add(pagar1);
 
             var pagar2 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar2.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
@@ -275,7 +276,7 @@ namespace FallGuys
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar2.translate(6.2f, -0.38f, 2.29f);
             pagar2.rotate(tiang.objectCenter, Vector3.UnitY, 90);
-            objectList.Add(pagar2);
+            listarena.Add(pagar2);
 
             var pagar3 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar3.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
@@ -283,7 +284,7 @@ namespace FallGuys
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar3.translate(6.2f, -0.38f, 4.29f);
             pagar3.rotate(tiang.objectCenter, Vector3.UnitY, 90);
-            objectList.Add(pagar3);
+            listarena.Add(pagar3);
 
             var pagar6 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar6.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
@@ -291,7 +292,7 @@ namespace FallGuys
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar6.translate(-0.08f, -1.18f, 2.29f);
             pagar6.rotate(tiang.objectCenter, Vector3.UnitY, 90);
-            objectList.Add(pagar6);
+            listarena.Add(pagar6);
 
             var pagar7 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar7.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
@@ -299,14 +300,14 @@ namespace FallGuys
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar7.translate(-0.08f, -1.18f, 4.29f);
             pagar7.rotate(tiang.objectCenter, Vector3.UnitY, 90);
-            objectList.Add(pagar7);
+            listarena.Add(pagar7);
 
             var pagar8 = new Asset3d(new Vector3(0.93f, 0.509f, 0.93f)); //violet
             pagar8.createCuboid(0, 0.5f, 0, 0.15f); //sama dengan createBoxVertices
             pagar8.scale(13.3f, 2.0f, 0.3f);
             //translate: x kanan kiri, y atas bawah, z jauh dekat
             pagar8.translate(0, -1.18f, 5.31f);
-            objectList.Add(pagar8);
+            listarena.Add(pagar8);
 
             #endregion
 
@@ -314,15 +315,15 @@ namespace FallGuys
 
             var awan1 = new Asset3d(new Vector3(1, 1, 1));
             awan1.createEllipsoid(0, 1.0f, 0, 0.6f, 0.2f, 0.5f, 100, 100);
-            objectList.Add(awan1);
+            listarena.Add(awan1);
 
             var awan2 = new Asset3d(new Vector3(1, 1, 1));
             awan2.createEllipsoid(-0.2f, 1.2f, 0, 0.3f, 0.2f, 0.3f, 100, 100);
-            objectList.Add(awan2);
+            listarena.Add(awan2);
 
             var awan3 = new Asset3d(new Vector3(1, 1, 1));
             awan3.createEllipsoid(0.2f, 1.2f, 0, 0.3f, 0.3f, 0.3f, 100, 100);
-            objectList.Add(awan3);
+            listarena.Add(awan3);
 
             awan1.translate(0.6f, 1.8f, 0);
             awan2.translate(0.6f, 1.8f, 0);
@@ -331,15 +332,15 @@ namespace FallGuys
             //===================AWAN 2============================
             var awan4 = new Asset3d(new Vector3(1, 1, 1));
             awan4.createEllipsoid(0.5f, 1.0f, 0, 0.6f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan4);
+            listarena.Add(awan4);
 
             var awan5 = new Asset3d(new Vector3(1, 1, 1));
             awan5.createEllipsoid(-0.1f, 1.0f, 0, 0.5f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan5);
+            listarena.Add(awan5);
 
             var awan6 = new Asset3d(new Vector3(1, 1, 1));
             awan6.createEllipsoid(0.2f, 1.3f, 0, 0.6f, 0.3f, 0.3f, 100, 100);
-            objectList.Add(awan6);
+            listarena.Add(awan6);
 
             awan4.translate(-1.5f, 1.4f, 4.0f);
             awan5.translate(-1.5f, 1.4f, 4.0f);
@@ -348,15 +349,15 @@ namespace FallGuys
             //===================AWAN 3============================
             var awan7 = new Asset3d(new Vector3(1, 1, 1));
             awan7.createEllipsoid(-0.3f, 1.2f, 0, 0.5f, 0.6f, 0.5f, 100, 100);
-            objectList.Add(awan7);
+            listarena.Add(awan7);
 
             var awan8 = new Asset3d(new Vector3(1, 1, 1));
             awan8.createEllipsoid(0.3f, 1.2f, 0, 0.3f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan8);
+            listarena.Add(awan8);
 
             var awan9 = new Asset3d(new Vector3(1, 1, 1));
             awan9.createEllipsoid(0, 0.9f, 0, 1.0f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan9);
+            listarena.Add(awan9);
 
             awan7.translate(2.0f, 1.6f, 3.5f);
             awan8.translate(2.0f, 1.6f, 3.5f);
@@ -365,15 +366,15 @@ namespace FallGuys
             //===================AWAN 3 duplicate============================
             var awan10 = new Asset3d(new Vector3(1, 1, 1));
             awan10.createEllipsoid(-0.3f, 1.0f, 0, 0.5f, 0.6f, 0.5f, 100, 100);
-            objectList.Add(awan10);
+            listarena.Add(awan10);
 
             var awan11 = new Asset3d(new Vector3(1, 1, 1));
             awan11.createEllipsoid(0.3f, 1.0f, 0, 0.3f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan11);
+            listarena.Add(awan11);
 
             var awan12 = new Asset3d(new Vector3(1, 1, 1));
             awan12.createEllipsoid(0, 0.7f, 0, 1.0f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan12);
+            listarena.Add(awan12);
 
             awan10.translate(-2.2f, 2.0f, 1.0f);
             awan11.translate(-2.2f, 2.0f, 1.0f);
@@ -382,15 +383,15 @@ namespace FallGuys
             //===================AWAN 2 DUPLICATE============================
             var awan13 = new Asset3d(new Vector3(1, 1, 1));
             awan13.createEllipsoid(0.5f, 1.0f, 0, 0.6f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan13);
+            listarena.Add(awan13);
 
             var awan14 = new Asset3d(new Vector3(1, 1, 1));
             awan14.createEllipsoid(-0.1f, 1.0f, 0, 0.5f, 0.3f, 0.5f, 100, 100);
-            objectList.Add(awan14);
+            listarena.Add(awan14);
 
             var awan15 = new Asset3d(new Vector3(1, 1, 1));
             awan15.createEllipsoid(0.2f, 1.3f, 0, 0.6f, 0.3f, 0.3f, 100, 100);
-            objectList.Add(awan15);
+            listarena.Add(awan15);
 
             awan13.translate(-1.5f, 2.1f, -5.0f);
             awan14.translate(-1.5f, 2.1f, -5.0f);
@@ -399,15 +400,15 @@ namespace FallGuys
             //===================AWAN 1 duplicate============================
             var awan16 = new Asset3d(new Vector3(1, 1, 1));
             awan16.createEllipsoid(0, 1.0f, 0, 0.6f, 0.2f, 0.5f, 100, 100);
-            objectList.Add(awan16);
+            listarena.Add(awan16);
 
             var awan17 = new Asset3d(new Vector3(1, 1, 1));
             awan17.createEllipsoid(-0.2f, 1.2f, 0, 0.3f, 0.2f, 0.3f, 100, 100);
-            objectList.Add(awan17);
+            listarena.Add(awan17);
 
             var awan18 = new Asset3d(new Vector3(1, 1, 1));
             awan18.createEllipsoid(0.2f, 1.2f, 0, 0.3f, 0.3f, 0.3f, 100, 100);
-            objectList.Add(awan18);
+            listarena.Add(awan18);
 
             awan16.translate(1.5f, 1.9f, -4.5f);
             awan17.translate(1.5f, 1.9f, -4.5f);
@@ -490,13 +491,22 @@ namespace FallGuys
             tanganKanan.createEllipsoid(0.0f, 0.0f, 0.0f, 0.2f, 0.0375f, 0.0375f, 100, 100);
             tanganKanan.translate(0.0f, 0.18f, 4.8f);
             tanganKanan.rotate(Vector3.Zero, Vector3.UnitZ, 75f);
+            tanganKanan.rotate(badanSetengahLinkgaranAtas.objectCenter, Vector3.UnitX, 90f);
             character.Add(tanganKanan);
 
             var tanganKiri = new Asset3d(new Vector3(0.99f, 0.20f, 0.53f));
             tanganKiri.createEllipsoid(0.0f, 0.0f, 0.0f, 0.2f, 0.0375f, 0.0375f, 100, 100);
             tanganKiri.translate(0.0f, 0.18f, 4.8f);
             tanganKiri.rotate(Vector3.Zero, Vector3.UnitZ, -75f);
+            tanganKiri.rotate(badanSetengahLinkgaranAtas.objectCenter, Vector3.UnitX, 90f);
             character.Add(tanganKiri);
+
+            var patokan = new Asset3d(new Vector3(0f, 0f, 1f));
+            patokan.createEllipsoid(0.0f, 0.0f, 0.0f, 0f, 0f, 0f, 100, 100);
+            patokan.translate(0.15f, 0.18f, 4.8f);
+            patokan.rotate(Vector3.Zero, Vector3.UnitZ, -75f);
+            patokan.rotate(badanSetengahLinkgaranAtas.objectCenter, Vector3.UnitX, 90f);
+            character.Add(patokan);
             #endregion
 
             #region topi cone
@@ -610,7 +620,7 @@ namespace FallGuys
             #endregion
 
             #region Load List Object
-            foreach (Asset3d i in objectList)
+            foreach (Asset3d i in listarena)
             {
                 i.load(Size.X, Size.Y);
             }
@@ -639,45 +649,45 @@ namespace FallGuys
 
             float time = (float)args.Time; //Deltatime ==> waktu antara frame sebelumnya ke frame berikutnya, gunakan untuk animasi
             totalTime = totalTime + time;
-            float time_char = (float)args.Time;
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit); // DepthBufferBit juga harus di clear karena kita memakai depth testing.
 
-            foreach (Asset3d i in objectList)
+            foreach (Asset3d i in listarena)
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
             }
 
-            objectList.ElementAt(1).rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 10 * time);
+            listarena.ElementAt(1).rotate(listarena.ElementAt(0).objectCenter, Vector3.UnitY, 10 * time);
 
             // RENDER BALON UDARA
             foreach (Asset3d i in balonudara)
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
-                i.rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 5 * time);
+                i.rotate(listarena.ElementAt(0).objectCenter, Vector3.UnitY, 5 * time);
             }
 
             #region Character Lompat
             //ANIMASI LOMPAT CHARACTER
-            //Y: 0.60256356
-            //if (character.ElementAt(1).objectCenter.Y > 0.60256356f || character.ElementAt(1).objectCenter.Y == 0.22651537f)
-            //{
-            //    time_char *= -1;
-            //}
+            //Untuk Tangan, urutan: batas atas || batas bawah
+            if (character.ElementAt(5).objectCenter.Y - character.ElementAt(1).objectCenter.Y > 0.3f || character.ElementAt(1).objectCenter.Y - character.ElementAt(5).objectCenter.Y > 0.3f)
+            {
+                speedTangan *= -1;
+            }
+            //Untuk Lompat, urutan: batas atas || batas bawah
+            if (character.ElementAt(1).objectCenter.Y > 0.5f || character.ElementAt(1).objectCenter.Y < 0.22f)
+            {
+                speedLompat *= -1;
+            }
             foreach (Asset3d i in character)
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
-                //i.translate(0, 0.1f * time_char, 0);
-
-                if (character.ElementAt(3).objectCenter.Y > 0.77645284f || character.ElementAt(3).objectCenter.Y < 0.046587706f)
-                {
-                    speedTangan *= -1;
-                }
+                i.translate(0, time * speedLompat, 0);
 
                 character.ElementAt(3).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
                 character.ElementAt(4).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
+                character.ElementAt(5).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
 
-                Console.WriteLine("X: " + character.ElementAt(3).objectCenter.Y);
+                Console.WriteLine("X: " + character.ElementAt(5).objectCenter.Y);
             }
             #endregion
 
@@ -720,7 +730,7 @@ namespace FallGuys
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
 
-                i.rotate(objectList.ElementAt(23).objectCenter, Vector3.UnitZ, speed_goyang * time);
+                i.rotate(listarena.ElementAt(23).objectCenter, Vector3.UnitZ, speed_goyang * time);
                 //Console.WriteLine("X " + bola_goyang.ElementAt(2).objectCenter.X);
             }
             #endregion
