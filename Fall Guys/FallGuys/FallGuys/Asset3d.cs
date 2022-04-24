@@ -539,6 +539,19 @@ namespace FallGuys
 
         }
 
+        //public List<Vector3> createCurveBazier()
+        //{
+        //    List<Vector3> _verticesBazier = new List<Vector3>();
+        //    List<int> pascal = getRow(index - 1);
+        //    _pascal = pascal.ToArray();
+        //    for (float t = 0; t <= 1; t += 0.01f)
+        //    {
+        //        Vector3 p = getP(index, t);
+        //        _verticesBazier.Add(p);
+        //    }
+        //    return _verticesBazier;
+        //}
+
         public void createHalfEllipsoid(float radiusX, float radiusY, float radiusZ, float _x, float _y, float _z)
         {
 

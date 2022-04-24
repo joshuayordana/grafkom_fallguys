@@ -16,7 +16,6 @@ namespace FallGuys
         List<Asset3d> animasi_gelinding = new List<Asset3d>();
         List<Asset3d> bola_goyang = new List<Asset3d>();
         List<Asset3d> character = new List<Asset3d>();
-        List<Asset3d> center_tangan = new List<Asset3d>();
         Camera _camera;
 
         //untuk tilt kamera
@@ -28,6 +27,8 @@ namespace FallGuys
         int speed_goyang = 15;
         float speed = 1.1f;
 
+        int speedTangan = 5;
+
         public Window(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
 
@@ -36,12 +37,6 @@ namespace FallGuys
         protected override void OnLoad()
         {
             base.OnLoad();
-
-            //warna bg nya sky blue: rgb(135,206,235)
-            //GL.ClearColor(0.529f, 0.807f, 0.921f, 1.0f);
-
-            //deepsky blue: rgb(0,191,255)
-            //GL.ClearColor(0, 0.749f, 1, 1.0f);
 
             //royal blue: rgb(65,105,225)
             GL.ClearColor(0.254f, 0.411f, 1, 1.0f);
@@ -478,10 +473,6 @@ namespace FallGuys
             badanTabung.translate(0.0f, 0.1f, 4.8f);
             character.Add(badanTabung);
 
-            var centerLompat = new Asset3d(new Vector3(1, 0, 0));
-            centerLompat.createEllipsoid(0.0f, 0.1f, 4.8f, 0.01f, 0.01f, 0.01f, 100, 100);
-            center_tangan.Add(centerLompat);
-
             var badanSetengahLinkgaranAtas = new Asset3d(new Vector3(0.99f, 0.20f, 0.53f));
             badanSetengahLinkgaranAtas.createHalfEllipsoid(0.15f, 0.15f, 0.15f, 0.0f, 0.0f, 0.0f);
             badanSetengahLinkgaranAtas.translate(0.0f, 0.225f, 4.8f);
@@ -618,6 +609,7 @@ namespace FallGuys
 
             #endregion
 
+            #region Load List Object
             foreach (Asset3d i in objectList)
             {
                 i.load(Size.X, Size.Y);
@@ -638,10 +630,7 @@ namespace FallGuys
             {
                 i.load(Size.X, Size.Y);
             }
-            foreach (Asset3d i in center_tangan)
-            {
-                i.load(Size.X, Size.Y);
-            }
+            #endregion
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)
@@ -660,7 +649,6 @@ namespace FallGuys
             }
 
             objectList.ElementAt(1).rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 10 * time);
-            //objectList.ElementAt(17).translate(1.0f, 0, -1.0f);
 
             // RENDER BALON UDARA
             foreach (Asset3d i in balonudara)
@@ -669,14 +657,10 @@ namespace FallGuys
                 i.rotate(objectList.ElementAt(0).objectCenter, Vector3.UnitY, 5 * time);
             }
 
-            foreach (Asset3d i in center_tangan)
-            {
-                i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
-            }
-
+            #region Character Lompat
             //ANIMASI LOMPAT CHARACTER
             //Y: 0.60256356
-            //if (character.ElementAt(1).objectCenter.Y == 0.60256356f || character.ElementAt(1).objectCenter.Y == 0.22651537f)
+            //if (character.ElementAt(1).objectCenter.Y > 0.60256356f || character.ElementAt(1).objectCenter.Y == 0.22651537f)
             //{
             //    time_char *= -1;
             //}
@@ -684,18 +668,20 @@ namespace FallGuys
             {
                 i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
                 //i.translate(0, 0.1f * time_char, 0);
-                //character.ElementAt(3).rotate(center_tangan.ElementAt(1).objectCenter, Vector3.UnitY, 10 * time);
 
-                //Console.WriteLine("Y: " + character.ElementAt(1).objectCenter.Y);
+                if (character.ElementAt(3).objectCenter.Y > 0.77645284f || character.ElementAt(3).objectCenter.Y < 0.046587706f)
+                {
+                    speedTangan *= -1;
+                }
+
+                character.ElementAt(3).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
+                character.ElementAt(4).rotate(character.ElementAt(1).objectCenter, Vector3.UnitX, speedTangan * time);
+
+                Console.WriteLine("X: " + character.ElementAt(3).objectCenter.Y);
             }
+            #endregion
 
-            foreach (Asset3d i in bola_goyang)
-            {
-                i.render(_camera.GetViewMatrix(), _camera.GetProjectionMatrix());
-
-                i.rotate(objectList.ElementAt(23).objectCenter, Vector3.UnitZ, speed_goyang * time);
-                //Console.WriteLine("X " + bola_goyang.ElementAt(2).objectCenter.X);
-            }
+            #region Animasi Gelinding
 
             //animasi gelinding 
             //posisi awal: Y 0.56831574 Z - 1.2936841
@@ -722,8 +708,9 @@ namespace FallGuys
                     counter = 0;
                 }
             }
+            #endregion
 
-            #region animasi bola goyang
+            #region Animasi Bola Goyang
             if (bola_goyang.ElementAt(2).objectCenter.X > 0.7737516f || bola_goyang.ElementAt(2).objectCenter.X < -0.9610913f)
             {
                 speed_goyang *= -1;
